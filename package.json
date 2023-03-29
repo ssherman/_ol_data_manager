@@ -1,0 +1,23 @@
+{
+  "name": "ol_data_manager",
+  "version": "1.0.0",
+  "description": "converts open library data dumps to tsv to import into postgresql",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Shane Sherman",
+  "license": "MIT",
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "moment": "^2.29.4",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.29.3",
+    "yargs": "^17.7.1"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
