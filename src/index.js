@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs')
 const transformAndCreateTable = require('./create_table')
 const yargs = require('yargs')
@@ -104,8 +106,8 @@ async function main () {
         throw new Error('table_name parameter is required when creating a table.')
       }
       console.log('creating table for ', inputType)
-      keyMetaData = await getUniqueKeys(inputFilePath, null)
-      transformAndCreateTable(tableName, keyMetaData)
+      columnMetaData = await writeToJSONFile(inputType, inputFilePath)
+      transformAndCreateTable(tableName, columnMetaData)
       break
   }
 }

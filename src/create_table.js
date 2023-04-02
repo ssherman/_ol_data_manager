@@ -1,8 +1,8 @@
 // createTable.js
-const sequelize = require('./db')
 const { DataTypes } = require('sequelize')
 
 async function createTable (tableName, columns) {
+  const sequelize = require('./db')
   const modelAttributes = {}
 
   for (const [columnName, type] of Object.entries(columns)) {
