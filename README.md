@@ -50,6 +50,7 @@ DB_NAME=dbname DB_USER=postgres DB_PASSWORD=password DB_HOST=localhost DB_PORT=6
 Keep in mind these files are HUGE and the script will take a very long time to complete. As of 4/2/2023
 - Authors takes 27~ minutes
 - Works takes 72~ minutes
+- Editions takes 153~ minutes
 
 ## Import the data
 launch psql and use the following command assuming the db is empty.
