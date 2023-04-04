@@ -68,14 +68,14 @@ function getTextValue (value) {
     // return basicArrayValue(value)
   }
 
-  // Case: Number
-  if (typeof value === 'number') {
-    return value
-  }
-
   // Case 1: null, undefined, or an empty string
   if (value === null || value === undefined || value === '') {
     return nullValue
+  }
+  
+  // Case: Number
+  if (typeof value === 'number') {
+    return value
   }
 
   // Case 2: a non-empty plain JavaScript string

@@ -67,7 +67,7 @@ const getSqlType = (columnName, columnTypes) => {
     if (columnTypes.length !== 1) {
       throw new Error(`Invalid metadata for column "${columnTypes}": expected a single type`)
     }
-    columnType = DataTypes.TEXT
+    columnType = DataTypes.INTEGER
   } else if (columnTypes.includes('object')) {
     if (columnTypes.length !== 1) {
       throw new Error(`Invalid metadata for column "${columnTypes}": expected a single type`)
