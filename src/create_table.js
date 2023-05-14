@@ -42,10 +42,9 @@ const getSqlType = (columnName, columnTypes) => {
   } else if (columnTypes.includes('TypeValueText')) {
     columnType = DataTypes.TEXT
   } else if (columnTypes.includes('array[string]')) {
-    // if (columnTypes.length !== 1) {
-    //   throw new Error(`Invalid metadata for column "${columnTypes}": expected a single type`);
-    // }
     columnType = DataTypes.ARRAY(DataTypes.TEXT)
+  } else if (columnTypes.includes('array[Integer]')) {
+    columnType = DataTypes.ARRAY(DataTypes.INTEGER)
   } else if (columnTypes.includes('array[SimpleKey]')) {
     columnType = DataTypes.ARRAY(DataTypes.TEXT)
   } else if (columnTypes.includes('TypeValueDatetime') || columnTypes.includes('datetime')) {

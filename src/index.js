@@ -11,7 +11,8 @@ const {
   formatText,
   getTextValue,
   booleanValue,
-  formatArray
+  formatArray,
+  formatIntegerArray
 } = require('./helpers')
 
 const JSON_KEYS_TO_IGNORE = [
@@ -200,6 +201,8 @@ function getType (value) {
   } else if (Array.isArray(value)) {
     if (value.every((v) => typeof v === 'string' || v === null)) {
       return 'array[string]'
+    } else if (value.every((v) => getType(v) === 'integer')) {
+      return 'array[Integer]'
     } else if (value.every((v) => getType(v) === 'SimpleKey')) {
       return 'array[SimpleKey]'
     } else if (value.every((v) => getType(v) === 'TypeValueText')) {
@@ -299,10 +302,9 @@ const transformColumn = (types, value) => {
   } else if (types.includes('array[string]')) {
     transformedValue = formatArray(getTextValue(value))
   } else if (types.includes('array[SimpleKey]')) {
-    // if (types.length !== 1) {
-    //   throw new Error(`Invalid metadata for column "${types}": expected a single type`);
-    // }
     transformedValue = formatArray(getTextValue(value))
+  } else if (types.includes('array[Integer]')) {
+    transformedValue = formatIntegerArray(value)
   } else if (types.includes('TypeValueDatetime')) {
     if (types.length !== 1) {
       throw new Error(`Invalid metadata for column "${types}": expected a single type`)

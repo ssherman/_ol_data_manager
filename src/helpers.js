@@ -39,6 +39,18 @@ function removeSpecialChars (value) {
   return v
 }
 
+function formatIntegerArray (input) {
+  if (!input || input.length === 0 || input === nullValue) {
+    return '{}'
+  }
+
+  if (!Array.isArray(input)) {
+    input = [input]
+  }
+
+  return '{' + input.join(",") + '}'
+}
+
 function formatArray (input) {
   if (!input || input.length === 0 || input === nullValue) {
     return '{}'
@@ -64,7 +76,7 @@ function formatText (value) {
 function getTextValue (value) {
   // Case: Array
   if (Array.isArray(value)) {
-    return value.map(x => getTextValue(x))
+    return value.map(x => getTextValue(x)).filter(x => x !== nullValue);
     // return basicArrayValue(value)
   }
 
@@ -111,5 +123,6 @@ module.exports = {
   basicJsonValue,
   getTextValue,
   formatText,
-  removeSpecialChars
+  removeSpecialChars,
+  formatIntegerArray
 }
